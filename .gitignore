@@ -1,0 +1,45 @@
+# Archivos de usuario y configuraciones locales
+*.sln.DotSettings.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Archivos de Visual Studio
+.vs/
+*.csproj.user
+
+# Carpetas de compilación
+[Bb]in/
+[Oo]bj/
+
+# Archivos de base de datos local
+*.db
+*.mdf
+*.ldf
+
+# ¡NUESTROS SECRETOS!
+secrets.json
+
+# Otros
+*.DotSettings
+!*.dotsettings.xml
+*.pidb
+*.log
+*.vsp
+*_i.c
+*_p.c
+*.ncb
+*.VC.db
+*.pdb
+*.ipch
+*.aps
+*.aps.bak
+*.sbr
+*.tmp
+*.psess
+*.vspx
+*.[Cc]ache
+*.orig.*
+project.lock.json
+project.assets.json
