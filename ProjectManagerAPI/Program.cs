@@ -6,8 +6,27 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// --- INICIO DE NUESTRA CONFIGURACIÓN DE CORS ---
+// 1. Definimos un nombre para nuestra política de CORS
+var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
+// 2. Añadimos el servicio de CORS al contenedor
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: myAllowSpecificOrigins,
+        policy =>
+        {
+            // 3. ¡LA PARTE MÁS IMPORTANTE!
+            //    Le decimos a la API que confíe en la URL exacta de tu frontend
+            policy.WithOrigins("https://localhost:44303")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+// --- FIN DE NUESTRA CONFIGURACIÓN DE CORS ---
+
+
+// Add services to the container.
 builder.Services.AddControllers();
 
 // 1. Obtenemos la cadena de conexión que escribimos en appsettings.json.
@@ -17,6 +36,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(connectionString));
 
+// --- Tu código de Autenticación (¡está perfecto!) ---
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -36,13 +56,18 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
-app.UseHttpsRedirection();
-app.UseHttpsRedirection();
+ app.UseHttpsRedirection();
+
+// --- ¡AQUÍ APLICAMOS LA POLÍTICA DE CORS! ---
+// 4. Le decimos a la aplicación que "Use" (aplique) la política de CORS.
+//    Debe ir ANTES de UseAuthentication y UseAuthorization.
+app.UseCors(myAllowSpecificOrigins);
 
 app.UseAuthentication(); // Primero te identificas
 app.UseAuthorization();  // Luego vemos si tienes permisos
 
-app.UseAuthorization();
+// (Había una línea duplicada aquí, la limpié)
+// app.UseAuthorization(); <-- Esta estaba duplicada
 
 app.MapControllers();
 

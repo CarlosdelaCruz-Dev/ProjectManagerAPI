@@ -1,0 +1,60 @@
+﻿.nav-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .nav-link:hover {
+        text-decoration: underline;
+    }
+
+.task-board {
+    display: flex;
+    justify-content: space-between; /* Distribuye las columnas */
+    gap: 20px; /* Espacio ENTRE columnas */
+}
+
+.task-column {
+    flex: 1; /* Hace que cada columna ocupe el mismo espacio */
+    background-color: #f4f4f4; /* Fondo gris claro para la columna */
+    border-radius: 8px;
+    padding: 15px;
+}
+
+    .task-column h2 {
+        margin-top: 0;
+        text-align: center;
+        border-bottom: 2px solid #ccc;
+        padding-bottom: 10px;
+    }
+
+.task-list {
+    min-height: 200px; /* Altura mínima para que se vea la columna vacía */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio ENTRE tarjetas de tarea */
+}
+
+.task-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    cursor: pointer; /* Para indicar que se puede hacer clic/arrastrar */
+}
+
+    .task-card:hover {
+        background: #fcfcfc;
+    }
+
+    .task-card h4 {
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+
+    .task-card p {
+        margin: 0;
+        font-size: 14px;
+        color: #555;
+    }

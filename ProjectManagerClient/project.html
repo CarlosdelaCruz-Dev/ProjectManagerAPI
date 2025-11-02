@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Proyecto</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="project.css">
+</head>
+<body>
+
+    <header class="dashboard-header">
+        <h1 id="project-name-header">Cargando Proyecto...</h1>
+
+        <nav>
+            <a href="dashboard.html" class="nav-link">Volver a Proyectos</a>
+
+            <button id="logout-button">Cerrar Sesión</button>
+        </nav>
+    </header>
+
+    <main>
+        <div id="task-board-container" class="task-board">
+
+            <div class="task-column">
+                <h2>Pendiente</h2>
+                <div class="task-list" id="task-column-Pendiente">
+                </div>
+            </div>
+
+            <div class="task-column">
+                <h2>En Progreso</h2>
+                <div class="task-list" id="task-column-En Progreso">
+                </div>
+            </div>
+
+            <div class="task-column">
+                <h2>Terminado</h2>
+                <div class="task-list" id="task-column-Terminado">
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="project.js"></script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+﻿/* style.css */
+
+/* --- Estilos Generales --- */
+/* 'body' selecciona la etiqueta <body> completa */
+body {
+    font-family: Arial, sans-serif; /* Fuente principal */
+    background-color: #f4f4f4; /* Color de fondo gris claro */
+    margin: 0; /* Quita el margen que ponen los navegadores por defecto */
+    padding: 20px; /* Añade espacio interno */
+    display: flex; /* Usa 'flexbox' para centrar el contenido */
+    flex-direction: column; /* Apila los elementos verticalmente (header arriba, main abajo) */
+    align-items: center; /* Centra todo horizontalmente */
+}
+
+h1, h2 {
+    color: #333; /* Color de texto oscuro para los títulos */
+}
+
+/* 'main' selecciona la etiqueta <main> */
+main {
+    display: flex; /* Usa flexbox para los formularios */
+    flex-wrap: wrap; /* Si no caben en una línea (móvil), se pondrán uno debajo del otro */
+    justify-content: center; /* Centra los formularios horizontalmente */
+    gap: 40px; /* Espacio de 40px ENTRE los formularios */
+}
+
+/* --- Estilos de Formularios --- */
+/* 'form' selecciona TODAS las etiquetas <form> */
+form {
+    background: #fff; /* Fondo blanco */
+    border: 1px solid #ccc; /* Borde gris sutil */
+    padding: 25px; /* Espacio interno */
+    border-radius: 8px; /* ¡Esquinas redondeadas! */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra ligera para darle profundidad */
+}
+
+/* '.form-group' selecciona cualquier elemento con la CLASE "form-group" (los <div>) */
+.form-group {
+    margin-bottom: 15px; /* Espacio debajo de cada grupo de (etiqueta + input) */
+}
+
+/* 'label' selecciona TODAS las etiquetas <label> */
+label {
+    display: block; /* Hace que la etiqueta ocupe su propia línea */
+    margin-bottom: 5px; /* Espacio pequeño entre la etiqueta y el input */
+    font-weight: bold; /* Texto en negritas */
+}
+
+/* Esto selecciona MÚLTIPLES tipos de input a la vez */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 300px; /* Ancho fijo de 300px */
+    padding: 8px; /* Espacio interno (para que el texto no esté pegado al borde) */
+    border: 1px solid #ddd; /* Borde gris más claro que el del formulario */
+    border-radius: 4px; /* Esquinas redondeadas */
+    box-sizing: border-box; /* Asegura que el 'padding' no haga el input más ancho de 300px */
+}
+
+/* 'button' selecciona TODAS las etiquetas <button> */
+button {
+    background-color: #007bff; /* Color de fondo azul "bootstrap" */
+    color: white; /* Texto blanco */
+    padding: 10px 15px; /* Espacio interno (lo hace más grande y fácil de clickear) */
+    border: none; /* Quita el borde feo por defecto */
+    border-radius: 4px; /* Esquinas redondeadas */
+    cursor: pointer; /* Muestra la manita (cursor) al pasar por encima */
+    font-size: 16px; /* Tamaño de letra un poco más grande */
+    width: 100%; /* Hace que el botón ocupe el 100% del ancho del formulario */
+}
+
+    /* 'button:hover' aplica este estilo SOLO cuando el mouse está sobre el botón */
+    button:hover {
+        background-color: #0056b3; /* Un azul un poco más oscuro al pasar el mouse */
+    }
+
+/* --- Clases de Mensajes (para JavaScript) --- */
+.error-message {
+    color: red;
+}
+
+.success-message {
+    color: green;
+}
+
+
+/* --- Estilos del Dashboard (Añadir al final de style.css) --- */
+
+.dashboard-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Pone 'Project Manager' a la izquierda y 'nav' a la derecha */
+    align-items: center;
+    background-color: #fff;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+    margin-bottom: 20px;
+}
+
+    .dashboard-header nav {
+        display: flex;
+        align-items: center;
+        gap: 15px; /* Espacio entre el nombre y el botón */
+    }
+
+#logout-button {
+    width: auto; /* El botón de logout no debe ocupar el 100% */
+    background-color: #dc3545; /* Color rojo para "salir" */
+}
+
+    #logout-button:hover {
+        background-color: #c82333;
+    }
+
+
+/* --- Estilos del Dashboard (Añadir al final) --- */
+
+#projects-container {
+    display: grid;
+    /* Crea un grid responsivo: columnas de 300px, pero que ocupen todo el espacio */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px; /* Espacio entre las tarjetas */
+}
+
+.project-card {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s; /* Efecto suave al pasar el mouse */
+}
+
+    .project-card:hover {
+        transform: translateY(-5px); /* Se "levanta" un poco */
+    }
+
+    .project-card h3 {
+        margin-top: 0;
+        color: #007bff; /* Título azul */
+    }
+
+/* --- Estilos del Formulario de Proyectos (Añadir al final) --- */
+
+.project-form {
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    max-width: 600px; /* Para que no ocupe toda la pantalla */
+}
+
+    .project-form h3 {
+        margin-top: 0;
+    }
+
+
+/* --- Estilos de la Tarjeta de Proyecto (Añadir al final) --- */
+
+.project-card-actions {
+    margin-top: 15px;
+    text-align: right; /* Alinea los botones a la derecha */
+}
+
+.delete-project-btn {
+    background-color: #dc3545; /* Rojo "peligro" */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+    .delete-project-btn:hover {
+        background-color: #c82333;
+    }
+
+
+
+/* --- Estilos del Modal (Añadir al final) --- */
+
+/* El fondo oscuro semi-transparente */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Se queda fijo en la pantalla */
+    z-index: 100; /* Se asegura de estar por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Permite scroll si el contenido es muy largo */
+    background-color: rgba(0,0,0,0.6); /* Fondo negro con 60% de opacidad */
+}
+
+/* La caja blanca del modal */
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% desde arriba y centrado horizontalmente */
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative; /* Para posicionar el botón de cerrar */
+    animation: fadeIn 0.3s; /* Pequeña animación de entrada */
+}
+
+/* Botón de cerrar (la '×') */
+.close-modal-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+    .close-modal-btn:hover,
+    .close-modal-btn:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+/* Animación simple de aparición */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.edit-project-btn {
+    background-color: #007bff; /* Azul "primario" */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 5px; /* Espacio entre botones */
+}
+
+    .edit-project-btn:hover {
+        background-color: #0056b3;
+    }
