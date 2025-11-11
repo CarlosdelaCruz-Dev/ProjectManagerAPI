@@ -1,60 +1,152 @@
-﻿.nav-link {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
+﻿/* --- 1. ESTILOS DE NAVEGACIÓN --- */
+/* Estilos para el enlace "Volver a Proyectos" en el header */
+
+/* Selecciona cualquier elemento que tenga la CLASE ".nav-link" */
+.nav-link {
+    color: #007bff; /* Un color azul estándar para que se identifique como enlace */
+    text-decoration: none; /* Quita el subrayado que los enlaces traen por defecto */
+    font-weight: bold; /* Pone el texto en negritas para que resalte */
 }
 
+    /* ':hover' es una "pseudo-clase". Este estilo se aplica */
+    /* SÓLO cuando el cursor del mouse está SOBRE el enlace. */
     .nav-link:hover {
+        /* Añade el subrayado como "feedback" visual al usuario */
         text-decoration: underline;
     }
 
+
+/* --- 2. ESTILOS DEL TABLERO KANBAN (CONTENEDORES) --- */
+/* Esta sección define la estructura de 3 columnas (tipo Trello) */
+
+/* Selecciona el 'div' principal que envuelve todo el tablero (ID: #task-board-container) */
 .task-board {
+    /* ¡LA REGLA MÁS IMPORTANTE! */
+    /* 'display: flex' convierte este 'div' en un "Contenedor Flexbox". */
+    /* ¿POR QUÉ? Por defecto, los 'divs' se apilan verticalmente. */
+    /* 'flex' los alinea en una FILA horizontal. */
     display: flex;
-    justify-content: space-between; /* Distribuye las columnas */
-    gap: 20px; /* Espacio ENTRE columnas */
+    /* 'justify-content' alinea a los hijos (las columnas) horizontalmente. */
+    /* 'space-between' empuja la primera columna a la izquierda, */
+    /* la última a la derecha, y distribuye el espacio sobrante */
+    /* de forma equitativa ENTRE ellas. */
+    justify-content: space-between;
+    /* 'gap' es la forma moderna de añadir espaciado. */
+    /* Pone '20px' de espacio ENTRE cada columna. Es más limpio que usar 'margin'. */
+    gap: 20px;
 }
 
+/* Selecciona cada columna individual (ej. el 'div' de "Pendiente") */
 .task-column {
-    flex: 1; /* Hace que cada columna ocupe el mismo espacio */
-    background-color: #f4f4f4; /* Fondo gris claro para la columna */
-    border-radius: 8px;
-    padding: 15px;
+    /* ¡LA SEGUNDA REGLA MÁS IMPORTANTE! */
+    /* 'flex: 1' es un atajo que le dice a CADA columna: */
+    /* "Quiero que crezcas (grow) y ocupes una (1) parte igual del espacio disponible". */
+    /* ¿POR QUÉ? Esto hace que tus 3 columnas se estiren automáticamente */
+    /* para ocupar el 100% del ancho de la página, cada una con un ancho idéntico. */
+    flex: 1;
+    background-color: #f4f4f4; /* Fondo gris claro para que la columna contraste con la página */
+    border-radius: 8px; /* Esquinas redondeadas */
+    padding: 15px; /* Espacio INTERNO, para que el contenido no se pegue a los bordes */
 }
 
+    /* Selecciona SÓLO los <h2> (títulos) que están DENTRO de ".task-column" */
     .task-column h2 {
-        margin-top: 0;
-        text-align: center;
-        border-bottom: 2px solid #ccc;
-        padding-bottom: 10px;
+        margin-top: 0; /* Quita el espacio superior que los <h2> traen por defecto */
+        text-align: center; /* Centra el título de la columna (ej. "Pendiente") */
+        border-bottom: 2px solid #ccc; /* Una línea divisoria gris sutil */
+        padding-bottom: 10px; /* Espacio entre el texto del título y la línea */
     }
 
+/* Selecciona el 'div' que contiene la lista de tarjetas (nuestra "Drop Zone") */
 .task-list {
-    min-height: 200px; /* Altura mínima para que se vea la columna vacía */
+    /* ¿POR QUÉ? Esto asegura que aunque la columna esté VACÍA, */
+    /* tenga una altura de 200px. Si tuviera 0px, sería imposible */
+    /* "soltar" (drop) una tarjeta nueva en una columna vacía. */
+    min-height: 200px;
+    /* ¡Flexbox otra vez! Usamos flexbox anidado. */
     display: flex;
+    /* Esta vez, le decimos que apile a sus hijos (las tarjetas) */
+    /* verticalmente, una encima de la otra. */
     flex-direction: column;
-    gap: 10px; /* Espacio ENTRE tarjetas de tarea */
+    /* Añade 10px de espacio ENTRE cada tarjeta de tarea */
+    gap: 10px;
 }
+
+
+/* --- 3. ESTILOS DE LAS TARJETAS DE TAREA (CARDS) --- */
+/* Define cómo se ve cada "tarjeta" individual que se puede arrastrar */
 
 .task-card {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 15px;
+    background: #fff; /* Fondo blanco (para que resalte sobre la columna gris) */
+    border: 1px solid #ddd; /* Borde sutil */
+    border-radius: 4px; /* Esquinas redondeadas (más pequeñas que las de la columna) */
+    padding: 15px; /* Espacio interno para el texto de la tarea */
+    /* Sombra sutil para dar "profundidad" y hacer que parezca "flotar" */
+    /* (0px horizontal, 1px vertical, 3px de difuminado, color negro al 10% de opacidad) */
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    cursor: pointer; /* Para indicar que se puede hacer clic/arrastrar */
+    /* Cambia el cursor del mouse a una "mano" (pointer). */
+    /* ¿POR QUÉ? Le da una pista visual al usuario de que este elemento */
+    /* es interactivo (clicable o, en nuestro caso, "arrastrable"). */
+    cursor: pointer;
 }
 
+    /* Se aplica SÓLO cuando el mouse está SOBRE la tarjeta */
     .task-card:hover {
-        background: #fcfcfc;
+        background: #fcfcfc; /* Un efecto de hover muy sutil (blanco un poco más crema) */
     }
 
+    /* Estilos para el título <h4> (ej. "Diseñar el Login") DENTRO de la tarjeta */
     .task-card h4 {
-        margin-top: 0;
+        margin-top: 0; /* Quita espacios por defecto para un look compacto */
         margin-bottom: 5px;
     }
 
+    /* Estilos para la descripción <p> DENTRO de la tarjeta */
     .task-card p {
-        margin: 0;
-        font-size: 14px;
-        color: #555;
+        margin: 0; /* Quita espacios por defecto */
+        font-size: 14px; /* Texto un poco más pequeño que el estándar */
+        color: #555; /* Gris oscuro (más suave que el negro puro) */
     }
+
+
+/* --- 4. ESTILOS DEL FORMULARIO "AÑADIR TAREA" --- */
+
+/* Selecciona el <form> de crear tarea por su CLASE */
+.create-task-form {
+    background: #fdfdfd; /* Fondo blanco (ligeramente diferente al de la columna) */
+    border: 1px solid #eee; /* Borde muy claro */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Espacio para separarlo del tablero de abajo */
+    /* No queremos que el formulario ocupe el 100% en pantallas grandes */
+    max-width: 600px;
+    /* ¡EL TRUCO DE CENTRADO! */
+    /* 'auto' en los márgenes horizontales le dice al navegador */
+    /* que calcule márgenes iguales a izquierda y derecha, centrando la caja. */
+    /* (Solo funciona si el elemento tiene un 'width' o 'max-width' definido). */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    /* Selecciona el <h3> (ej. "Añadir Nueva Tarea") SÓLO DENTRO de ese formulario */
+    .create-task-form h3 {
+        margin-top: 0; /* Quita el espacio superior por defecto */
+    }
+
+
+/* --- 5. ESTILOS DE FEEDBACK (DRAG & DROP) --- */
+
+/* ¡Selector Compuesto! */
+/* '.task-card.dragging' -> Se aplica SÓLO a un elemento que tenga */
+/* AMBAS clases al mismo tiempo: ".task-card" Y ".dragging". */
+/* */
+/* ¿POR QUÉ? Nuestro 'project.js' AÑADE la clase '.dragging' */
+/* dinámicamente cuando el usuario "agarra" la tarjeta ('dragstart'), */
+/* y la QUITA cuando la "suelta" ('dragend'). */
+.task-card.dragging {
+    /* La hacemos semitransparente (efecto "fantasma") */
+    opacity: 0.5;
+    /* Le damos un borde punteado azul para resaltar */
+    /* aún más cuál es la tarjeta que estamos moviendo. */
+    border: 2px dashed #007bff;
+}

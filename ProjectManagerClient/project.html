@@ -1,11 +1,16 @@
 ﻿<!DOCTYPE html>
+
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Detalle del Proyecto</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="project.css">
+
+    <link rel="stylesheet" href="style.css?v=1.0.0">
+
+    <link rel="stylesheet" href="project.css?v=1.0.0">
 </head>
 <body>
 
@@ -20,6 +25,27 @@
     </header>
 
     <main>
+
+        <form id="create-task-form" class="create-task-form">
+            <h3>Añadir Nueva Tarea</h3>
+
+            <div class="form-group">
+                <label for="task-title">Título de la Tarea:</label>
+                <input type="text" id="task-title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="task-description">Descripción (Opcional):</label>
+                <input type="text" id="task-description">
+            </div>
+
+            <button type="submit">Añadir Tarea</button>
+
+            <p id="create-task-error" class="error-message"></p>
+        </form>
+
+        <hr>
+
         <div id="task-board-container" class="task-board">
 
             <div class="task-column">
@@ -43,6 +69,6 @@
         </div>
     </main>
 
-    <script src="project.js"></script>
+    <script src="project.js?v=1.0.0"></script>
 </body>
 </html>
