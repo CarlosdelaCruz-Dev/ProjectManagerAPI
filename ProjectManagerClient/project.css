@@ -99,6 +99,7 @@
     .task-card h4 {
         margin-top: 0; /* Quita espacios por defecto para un look compacto */
         margin-bottom: 5px;
+        padding-right: 25px; /*  Añadimos espacio a la DERECHA del título, para que el texto no se escriba "debajo" de nuestro botón 'X' */
     }
 
     /* Estilos para la descripción <p> DENTRO de la tarjeta */
@@ -149,4 +150,81 @@
     /* Le damos un borde punteado azul para resaltar */
     /* aún más cuál es la tarjeta que estamos moviendo. */
     border: 2px dashed #007bff;
+}
+
+/* --- 6. ESTILOS DE LA TARJETA DE TAREA (MODIFICACIÓN) --- */
+
+/* Hacemos la tarjeta "relativa" para poder posicionar
+  el botón 'X' de forma "absoluta" DENTRO de ella.
+*/
+.task-card {
+    /* ... (tus estilos existentes: background, border, etc.) ... */
+    position: relative; /* ¡NUEVO! */
+}
+
+/* Estilo para el nuevo botón 'X' de eliminar
+  (el que tiene la clase .delete-task-btn)
+*/
+    .task-card .delete-task-btn {
+        /* --- Posicionamiento --- */
+        position: absolute; /* Lo saca del flujo normal */
+        top: 8px; /* 8px desde arriba */
+        right: 10px; /* 10px desde la derecha */
+        z-index: 10; /* Se asegura de que esté encima del <h4> */
+        /* --- ¡RESETEO DE ESTILOS GLOBALES! (Lo más importante) --- */
+        background: none; /* Quita el fondo azul */
+        width: auto; /* Resetea el 'width: 100%' */
+        padding: 2px; /* Un padding pequeño, en lugar del padding grande global */
+        /* --- Estilo de la 'X' --- */
+        color: #999; /* Color gris */
+        font-size: 1.4em; /* Un poco más grande */
+        font-weight: bold;
+        line-height: 1; /* Altura de línea compacta */
+        border: none; /* Sin borde */
+        cursor: pointer;
+        transition: color 0.2s; /* Transición suave */
+    }
+
+    /* Cuando el mouse pasa SOBRE el botón 'X' */
+    .delete-task-btn:hover {
+        color: #dc3545; /* Se pone de color rojo "peligro" */
+    }
+
+
+/* --- 7. ESTILOS DE BOTONES DE TARJETA --- */
+
+/* Estilo para el nuevo botón de "Editar" en la tarjeta */
+.edit-task-btn {
+    /* Reseteamos los estilos globales de 'button' */
+    background: #6c757d; /* Un color gris "secundario" */
+    border: none;
+    color: white;
+    padding: 4px 8px; /* Pequeño */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px; /* Pequeño */
+    width: auto; /* ¡Importante! Resetea el 'width: 100%' */
+    /* Posicionamiento */
+    position: absolute; /* Lo sacamos del flujo */
+    bottom: 8px; /* 8px desde abajo */
+    right: 10px; /* 10px desde la derecha */
+    opacity: 0; /* ¡Oculto por defecto! */
+
+    transition: opacity 0.2s; /* Transición suave */
+}
+
+/* Hacemos que el botón "Editar" aparezca SÓLO */
+/* cuando el mouse está SOBRE la tarjeta padre. */
+.task-card:hover .edit-task-btn {
+    opacity: 1; /* ¡Lo hacemos visible! */
+}
+
+.edit-task-btn:hover {
+    background: #5a6268; /* Un gris más oscuro al pasar el mouse */
+}
+
+/* Modificamos el 'padding' del <h4> de la tarjeta */
+/* para que no se choque con el botón 'X' de eliminar */
+.task-card h4 {
+    padding-right: 25px;
 }
